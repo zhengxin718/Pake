@@ -138,7 +138,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: output-${{ inputs.platform }}.zip
-          path: src-tauri/target/release/bundle/msi/*.msi
+          path:  |
+            src-tauri/target/**/bundle/msi/*.msi
+            src-tauri/target/**/release/*.msi
           retention-days: 3
 
       - name: Rust cache store
