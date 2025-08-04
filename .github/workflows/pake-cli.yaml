@@ -139,14 +139,14 @@ jobs:
         with:
           name: output-${{ inputs.platform }}.zip
           path:  |
-            # Windows 输出路径
-            node_modules/pake-cli/src-tauri/target/**/bundle/msi/*.msi
-            node_modules/pake-cli/src-tauri/target/**/release/*.msi
-            # macOS 输出路径
-            node_modules/pake-cli/src-tauri/target/**/bundle/dmg/*.dmg
-            # Linux 输出路径
-            node_modules/pake-cli/src-tauri/target/**/bundle/deb/*.deb
-            node_modules/pake-cli/src-tauri/target/**/bundle/appimage/*.AppImage
+            # 扩展可能的 MSI 路径
+            node_modules\pake-cli\src-tauri\target\*\bundle\msi\*.msi
+            node_modules\pake-cli\src-tauri\target\*\release\*.msi
+            node_modules\pake-cli\src-tauri\target\bundle\msi\*.msi
+            node_modules\pake-cli\src-tauri\target\release\*.msi
+            # 添加 EXE 作为备选（如果 MSI 未生成）
+            node_modules\pake-cli\src-tauri\target\*\release\*.exe
+            node_modules\pake-cli\src-tauri\target\release\*.exe
           retention-days: 3
 
       - name: Rust cache store
